@@ -45,14 +45,9 @@ from sklearn import metrics
 
 app = Flask(__name__)
 
-path = "Dataset"
-labels = []
+labels = ["FAKE", "REAL"]
 X = []
 Y = []
-for root, dirs, directory in os.walk(path):
-    name = os.path.basename(root).strip()
-    if name in ["FAKE", "REAL"] and name not in labels:
-        labels.append(name)
 
 print("Dataset Class Labels : " + str(labels))
     
