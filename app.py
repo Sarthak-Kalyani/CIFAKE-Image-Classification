@@ -44,6 +44,25 @@ from sklearn import metrics
 
 
 app = Flask(__name__)
+def init_db():
+    con = sqlite3.connect("signup.db")
+    cur = con.cursor()
+
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS info (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user TEXT NOT NULL,
+            email TEXT NOT NULL,
+            password TEXT NOT NULL,
+            mobile TEXT,
+            name TEXT
+        )
+    """)
+
+    con.commit()
+    con.close()
+
+init_db()
 
 labels = ["FAKE", "REAL"]
 X = []
